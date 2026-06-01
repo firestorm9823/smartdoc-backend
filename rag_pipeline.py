@@ -41,7 +41,7 @@ class TFIDFEmbedder:
                 word_counts[word] = word_counts.get(word, 0) + 1
         # Keep top-dim words by frequency
         sorted_words = sorted(word_counts.items(), key=lambda x: -x[1])
-        self.vocab = {word: i % self.dim for word, (i, _) in enumerate(sorted_words[:self.dim * 10])}
+        self.vocab = {word: i % self.dim for i, (word, _) in enumerate(sorted_words[:self.dim * 10])}
         self.fitted = True
 
     def _embed_one(self, text):
